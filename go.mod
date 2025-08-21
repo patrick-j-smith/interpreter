@@ -1,3 +1,3 @@
-module github.com/patrick-j-smith/interpreter
+module interpreter
 
 go 1.25.0
