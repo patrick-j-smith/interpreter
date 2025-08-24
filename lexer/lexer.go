@@ -73,12 +73,16 @@ func New(input string) *Lexer {
 	return l
 }
 
-func (l *Lexer) readChar() {
+func (l *Lexer) peekChar() byte {
 	if l.readPosition >= len(l.input) {
-		l.ch = 0
+		return 0
 	} else {
-		l.ch = l.input[l.readPosition]
+		return l.input[l.readPosition]
 	}
+}
+
+func (l *Lexer) readChar() {
+	l.ch = l.peekChar()
 	l.position = l.readPosition
 	l.readPosition += 1
 }
