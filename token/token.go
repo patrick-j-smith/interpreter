@@ -26,6 +26,10 @@ const (
 	LT       = "<"
 	GT       = ">"
 
+	// Comparator
+	EQ     = "=="
+	NOT_EQ = "!="
+
 	// Delimiters
 	COMMA     = ","
 	SEMICOLON = ";"
@@ -53,6 +57,8 @@ var keywords = map[string]TokenType{
 	"if":     IF,
 	"else":   ELSE,
 	"return": RETURN,
+	"==":     EQ,
+	"!=":     NOT_EQ,
 }
 
 func LookupIdent(ident string) TokenType {
