@@ -32,7 +32,11 @@ func (l *Lexer) NextToken() token.Token {
 	case '>':
 		tok = newToken(token.GT, l.ch)
 	case '=':
-		tok = newToken(token.ASSIGN, l.ch)
+		if l.peekChar() == '=' {
+			tok = l.makeTwoCharToken()
+		} else {
+			tok = newToken(token.ASSIGN, l.ch)
+		}
 	case '+':
 		tok = newToken(token.PLUS, l.ch)
 	case ',':
@@ -85,6 +89,13 @@ func (l *Lexer) readChar() {
 	l.ch = l.peekChar()
 	l.position = l.readPosition
 	l.readPosition += 1
+}
+
+func (l *Lexer) makeTwoCharToken() token.Token {
+	ch := string(l.ch)
+	l.readChar()
+	ch += string(l.ch)
+	return token.Token{Type: token.LookupIdent(ch), Literal: ch}
 }
 
 func (l *Lexer) readIdentifier() string {
