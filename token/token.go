@@ -57,8 +57,18 @@ var keywords = map[string]TokenType{
 	"if":     IF,
 	"else":   ELSE,
 	"return": RETURN,
-	"==":     EQ,
-	"!=":     NOT_EQ,
+}
+
+var twoCharKeys = map[string]TokenType{
+	"==": EQ,
+	"!=": NOT_EQ,
+}
+
+func LookupKeys(key string) TokenType {
+	if tok, ok := twoCharKeys[key]; ok {
+		return tok
+	}
+	return ILLEGAL
 }
 
 func LookupIdent(ident string) TokenType {

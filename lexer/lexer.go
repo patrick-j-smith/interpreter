@@ -99,7 +99,7 @@ func (l *Lexer) makeTwoCharToken() token.Token {
 	ch := string(l.ch)
 	l.readChar()
 	ch += string(l.ch)
-	return token.Token{Type: token.LookupIdent(ch), Literal: ch}
+	return token.Token{Type: token.LookupKeys(ch), Literal: ch}
 }
 
 func (l *Lexer) readIdentifier() string {
