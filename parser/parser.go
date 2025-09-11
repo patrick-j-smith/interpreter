@@ -27,6 +27,25 @@ func (p *Parser) nextToken() {
 }
 
 func (p *Parser) ParseProgram() *ast.Program {
+	program := &ast.Program{}
+	program.Statements = []ast.Statement{}
+
+	return nil
+}
+
+func (p *Parser) parseLetStatement() *ast.Program {
+	return nil
+}
+
+func (p *Parser) parseIdentifier() *ast.Program {
+	return nil
+}
+
+func (p *Parser) parseExpression() *ast.Program {
+	return nil
+}
+
+func (p *Parser) parseOperatorExpression() *ast.Program {
 	return nil
 }
 
