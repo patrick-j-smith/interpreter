@@ -12,8 +12,10 @@ func TestLetStatements(t *testing.T) {
 		let y = 10;
 		let foobar = 838383;
 	`
+
 	l := lexer.New(input)
 	p := New(l)
+
 	program := p.ParseProgram()
 	if program == nil {
 		t.Fatalf("ParseProgram returned nil program")
