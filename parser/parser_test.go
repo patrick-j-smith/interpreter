@@ -71,7 +71,7 @@ func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
 	return true
 }
 
-func TestReturnStatement(t *testing.T) {
+func TestReturnStatements(t *testing.T) {
 	input := `
 		return 5;
 		return 10;
@@ -90,17 +90,16 @@ func TestReturnStatement(t *testing.T) {
 
 	for _, stmt := range program.Statements {
 		returnStmt, ok := stmt.(*ast.ReturnStatement)
+
 		if !ok {
 			t.Errorf("stmt.Statement not *ast.ReturnStatement. Instead got=%T", stmt)
 			continue
 		}
-	}
 
-	if returnStmt.TokenLiteral() != "return" {
-		t.Errorf("returnStmt.TokenLiteral not 'return', got %q", returnStmt.TokenLiteral())
+		if returnStmt.TokenLiteral() != "return" {
+			t.Errorf("returnStmt.TokenLiteral not 'return', got %q", returnStmt.TokenLiteral())
+		}
 	}
-
-	return true
 }
 
 func checkParserErrors(t *testing.T, p *Parser) {
